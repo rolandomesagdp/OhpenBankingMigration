@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BankingMigration.Data\BankngMigration.Data.csproj" />
+    <ProjectReference Include="..\BankingMigration.Data\BankingMigration.Data.csproj" />
     <ProjectReference Include="..\BankingMigration.Domain\BankingMigration.Domain.csproj" />
   </ItemGroup>
 

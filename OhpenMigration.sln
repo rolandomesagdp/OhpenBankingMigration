@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingMigration.Api", "BankingMigration.Api\BankingMigration.Api.csproj", "{FE8E22BA-168C-4FD3-B48A-806D04D2A5C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankngMigration.Data", "BankingMigration.Data\BankngMigration.Data.csproj", "{835C6B0F-2C48-42B8-A7C1-379CB3B5D29A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingMigration.Data", "BankingMigration.Data\BankingMigration.Data.csproj", "{835C6B0F-2C48-42B8-A7C1-379CB3B5D29A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingMigration.Domain", "BankingMigration.Domain\BankingMigration.Domain.csproj", "{AFC2F2A4-04BB-43C4-9CDA-DB729DD6968C}"
 EndProject

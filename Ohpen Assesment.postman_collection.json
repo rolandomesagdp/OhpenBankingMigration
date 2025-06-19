@@ -1,0 +1,156 @@
+{
+	"info": {
+		"_postman_id": "001b9d73-8b97-4982-81c8-66861dd9b07d",
+		"name": "Ohpen Assesment",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1025951"
+	},
+	"item": [
+		{
+			"name": "Request Bulk Migration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"type\": 0,\r\n    \"status\": 0,\r\n    \"bancAccounts\": [{\r\n        \"id\": 0,\r\n        \"jobId\": \"0\",\r\n        \"alias\": \"Bill account\",\r\n        \"customerName\": \"William Turner\",\r\n        \"status\": 0,\r\n        \"job\": null\r\n    },{\r\n        \"id\": 0,\r\n        \"jobId\": \"0\",\r\n        \"alias\": \"Rob Account\",\r\n        \"customerName\": \"Robert Johnson\",\r\n        \"status\": 0,\r\n        \"job\": null\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7215/migration",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7215",
+					"path": [
+						"migration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Request Batch Migration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"type\": 1,\r\n    \"status\": 0,\r\n    \"bancAccounts\": [{\r\n        \"id\": 0,\r\n        \"jobId\": \"0\",\r\n        \"alias\": \"Jonny Account\",\r\n        \"customerName\": \"John Doe\",\r\n        \"status\": 0,\r\n        \"job\": null\r\n    },{\r\n        \"id\": 0,\r\n        \"jobId\": \"0\",\r\n        \"alias\": \"Phill Account\",\r\n        \"customerName\": \"Phillip Morrison\",\r\n        \"status\": 0,\r\n        \"job\": null\r\n    }]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://localhost:7215/migration",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7215",
+					"path": [
+						"migration"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check Migration Status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://localhost:7215/migration/1/status",
+					"protocol": "https",
+					"host": [
+						"localhost"
+					],
+					"port": "7215",
+					"path": [
+						"migration",
+						"1",
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run Migration AZ Function",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"input\": \"1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:7019/admin/functions/MigrationJobRunner",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "7019",
+					"path": [
+						"admin",
+						"functions",
+						"MigrationJobRunner"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6InVuZVBLaENIX0lpOEFRNVk4bm1pTSJ9.eyJpc3MiOiJodHRwczovL2Rldi1yNG1rMDRpN2N0eWt5YXhwLnVzLmF1dGgwLmNvbS8iLCJzdWIiOiJlY1JTZ2puSUVOd1JlZ292ZUt1amE2VWFKcENqTVY2eEBjbGllbnRzIiwiYXVkIjoiaHR0cHM6Ly9vaHBlbmFwaS5jb20iLCJpYXQiOjE3NTAwNjM2OTcsImV4cCI6MTc1MDE1MDA5NywiZ3R5IjoiY2xpZW50LWNyZWRlbnRpYWxzIiwiYXpwIjoiZWNSU2dqbklFTndSZWdvdmVLdWphNlVhSnBDak1WNngifQ.pjyAHBnSsrmSN1zYkn7VIe3mpxzIlB0DWJLJzB2RdIl2i1UQsHZZAOuJmo6SpbkQVP6JqWPaFlEP-xqreaff6xhFRFasKCxqpHD1kJFxeDstbREZ8k4QLu2PoLz-ShYx3chWb9SsXInmC7Q6ZkE2qvKBisItctjxUxMHRtcWQZteUizozKf3Xh7Q2i-ihm0FYyZVNOSqlvNSMdyNFG_ajS-jzu712CvuW5uu077pNhyq_MCxHa4p_1E2NknD8HqDgZndEDY0Csxv3viVGP79GO7EyMfj2EhKEMhkL1oY8vzyyuiZ8lROySRGh_cF28z0WIzc8YMNyZRWHaDjpAyqKg",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
