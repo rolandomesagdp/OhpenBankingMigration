@@ -17,7 +17,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.17" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BankingMigration.Data\BankngMigration.Data.csproj" />
+    <ProjectReference Include="..\BankingMigration.Data\BankingMigration.Data.csproj" />
     <ProjectReference Include="..\BankingMigration.Domain\BankingMigration.Domain.csproj" />
   </ItemGroup>
 </Project>
