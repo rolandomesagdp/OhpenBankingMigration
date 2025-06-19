@@ -1,2 +1,2 @@
-# ohpenBankingMigration
+# OhpenBankingMigration
 Technical assesment for Ohpen
