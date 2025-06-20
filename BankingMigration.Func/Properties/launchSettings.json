@@ -2,8 +2,14 @@
   "profiles": {
     "Migration.Func": {
       "commandName": "Project",
-      "commandLineArgs": "--port 7019",
-      "launchBrowser": false
+      "commandLineArgs": "--port 7019"
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchUrl": "{Scheme}://{ServiceHost}:{ServicePort}",
+      "containerRunArguments": "--init",
+      "httpPort": 31073,
+      "useSSL": false
     }
   }
 }
