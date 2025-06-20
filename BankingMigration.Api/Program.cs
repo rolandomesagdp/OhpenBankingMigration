@@ -8,9 +8,9 @@ using BankingMigration.Domain.Jobs;
 using BankingMigration.Domain.Jobs.UseCases;
 using BankingMigration.Domain.Notifications;
 using BankingMigration.Data.Context;
-using BankingMigration.Data.Jobs;
-using BankingMigration.Data.Migration;
 using System.Security.Claims;
+using BankingMigration.Data.BankAccounts;
+using BankingMigration.Data.Migration.Jobs;
 
 var builder = WebApplication.CreateBuilder(args);
 

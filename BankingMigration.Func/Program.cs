@@ -10,7 +10,8 @@ using BankingMigration.Domain.Notifications;
 using BankingMigration.Func.Migration;
 using BankingMigration.Data.Context;
 using BankingMigration.Data.Migration;
-using BankingMigration.Data.Jobs;
+using BankingMigration.Data.BankAccounts;
+using BankingMigration.Data.Migration.Jobs;
 
 var builder = FunctionsApplication.CreateBuilder(args);
 

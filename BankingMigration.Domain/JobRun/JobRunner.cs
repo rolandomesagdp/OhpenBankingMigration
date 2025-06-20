@@ -35,11 +35,11 @@ namespace BankingMigration.Domain.JobRun
                 {
                     await StartRunning();
                     await ProcessAllAccounts();
-                    await EndRunning();
+                    await EndRunning(JobStatus.Succeed);
                 }
                 else
                 {
-                    var message = $"The job with id {Job.Id} cannot be proccessed because is invalid. Please, provide a valid job";
+                    var message = $"The job with id {Job.Id} cannot run either because it is invalid, it was already proccessed or it is currently running. Please, provide a valid job";
                     logger.LogError(message);
                     throw new InvalidOperationException(message);
                 }
@@ -47,7 +47,7 @@ namespace BankingMigration.Domain.JobRun
             catch (Exception ex)
             {
                 logger.LogError($"The Job with id {Job.Id} could not end running bacause of an unexpected error. Details: {ex.Message}", [Job, ex]);
-                await EndRunning();
+                await EndRunning(JobStatus.Failed);
             }
         }
 
@@ -58,25 +58,58 @@ namespace BankingMigration.Domain.JobRun
             try
             {
                 await migrationService.MigrateBankAccount(account);
-                await accountRepository.UpdateBankAccountStatus(account.Id, MigrationStatus.Proccessed);
+                await UpdateAccountStatus(account, MigrationStatus.Proccessed);
             }
             catch (Exception ex)
             {
-                await accountRepository.UpdateBankAccountStatus(account.Id, MigrationStatus.Failed);
+                await UpdateAccountStatus(account, MigrationStatus.Failed);
                 throw new Exception($"Bank Account {account.Id} migration failed. Details: {ex.Message}");
             }
         }
 
         public async Task StartRunning()
         {
-            Job.ChangeStatus(JobStatus.Running);
-            await jobRepository.Update(Job);
+            try
+            {
+                Job.SetStatus(JobStatus.Running);
+                await jobRepository.Update(Job);
+            }
+            catch (Exception ex)
+            {
+                var message = $"Error during the job update to the running status. Job id: {Job.Id}";
+                logger.LogError(message, ex);
+                throw new Exception(message);
+            }
         }
 
-        public async Task EndRunning()
+        public async Task EndRunning(JobStatus jobStatus)
         {
-            Job.ChangeStatus(JobStatus.Finished);
-            await jobRepository.Update(Job);
+            try
+            {
+                if (jobStatus == JobStatus.Succeed || jobStatus == JobStatus.Failed)
+                {
+                    Job.SetStatus(jobStatus);
+                    await jobRepository.Update(Job);
+                }
+                else
+                {
+                    throw new ArgumentException($"The provided job status is not valid as ending status. Please, make sure to provide a valid status to end the job");
+                }
+            }
+            catch (Exception ex)
+            {
+                if (ex is ArgumentException)
+                    throw;
+                var message = $"Error during the job update to the {jobStatus} status. Job id: {Job.Id}";
+                logger.LogError(message, ex);
+                throw new Exception(message);
+            }
+        }
+
+        private async Task UpdateAccountStatus(BankAccount account, MigrationStatus status)
+        {
+            account.SetStatus(status);
+            await accountRepository.UpdateBankAccount(account);
         }
     }
 }

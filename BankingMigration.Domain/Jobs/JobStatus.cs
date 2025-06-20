@@ -4,6 +4,7 @@
     {
         Created,
         Running,
-        Finished
+        Succeed,
+        Failed
     }
 }

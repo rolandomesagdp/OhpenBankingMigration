@@ -13,7 +13,7 @@ namespace BankingMigration.Domain.BankAccounts
 
         public required string CustomerName { get; set; }
 
-        public MigrationStatus Status { get; set; }
+        public MigrationStatus Status { get; private set; }
 
         public Job? Job { get; set; }
 
@@ -21,6 +21,11 @@ namespace BankingMigration.Domain.BankAccounts
         {
             // ToDo: Implement real validation for an account
             return true;
+        }
+
+        public void SetStatus(MigrationStatus status)
+        {
+            Status = status;
         }
     }
 }

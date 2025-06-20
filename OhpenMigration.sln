@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingMigration.Domain", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingMigration.Func", "BankingMigration.Func\BankingMigration.Func.csproj", "{9E126ABD-9C50-4C42-833C-E959D76EE36F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BankingMigration.Domain.Tests", "BankingMigration.Domain.Tests\BankingMigration.Domain.Tests.csproj", "{8822FAF6-F38B-4224-B788-01DCF35DB787}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{9E126ABD-9C50-4C42-833C-E959D76EE36F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E126ABD-9C50-4C42-833C-E959D76EE36F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E126ABD-9C50-4C42-833C-E959D76EE36F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8822FAF6-F38B-4224-B788-01DCF35DB787}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8822FAF6-F38B-4224-B788-01DCF35DB787}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8822FAF6-F38B-4224-B788-01DCF35DB787}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8822FAF6-F38B-4224-B788-01DCF35DB787}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

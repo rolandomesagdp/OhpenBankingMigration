@@ -6,7 +6,7 @@ namespace BankingMigration.Domain.Jobs
     {
         public int Id { get; set; }
 
-        public JobType Type { get; set; }
+        public JobType Type { get; private set; }
 
         public JobStatus Status { get; private set; }
 
@@ -15,7 +15,7 @@ namespace BankingMigration.Domain.Jobs
         public bool IsValid()
         {
             // ToDo: Implement real validation for a job
-            return true && AccountsAreValid();
+            return BancAccounts.Count > 0 && AccountsAreValid();
         }
 
         public bool AccountsAreValid()
@@ -23,9 +23,14 @@ namespace BankingMigration.Domain.Jobs
             return !BancAccounts.Any(x => x.IsValid() == false);
         }
 
-        public void ChangeStatus(JobStatus status)
+        public void SetStatus(JobStatus status)
         {
             Status = status;
+        }
+
+        public void SetType(JobType type)
+        {
+            Type = type;
         }
     }
 }

@@ -2,7 +2,7 @@
 using BankingMigration.Domain.Jobs;
 using BankingMigration.Data.Context;
 
-namespace BankingMigration.Data.Migration
+namespace BankingMigration.Data.Migration.Jobs
 {
     public class JobsRepository : IJobsRepository
     {
