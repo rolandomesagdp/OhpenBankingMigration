@@ -6,6 +6,6 @@
     "ServiceBusQueue": "Endpoint=sb://foo.servicebus.windows.net/;SharedAccessKeyName=someKeyName;SharedAccessKey=someKeyValue"
   },
   "ConnectionStrings": {
-    "MigrationJobsDb": "Server=(localdb)\\mssqllocaldb;Database=MigrationJobsDb;Trusted_Connection=True;"
+    "MigrationJobsDb": "Server=localhost,1431;Database=MigrationJobsDb;User Id=sa;Password=AVeryComplex123Password!;Encrypt=false;TrustServerCertificate=true;MultipleActiveResultSets=true"
   }
 }
