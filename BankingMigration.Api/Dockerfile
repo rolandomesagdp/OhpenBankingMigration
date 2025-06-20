@@ -11,11 +11,11 @@ EXPOSE 8081
 # This stage is used to build the service project
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
-WORKDIR /src
+WORKDIR /
 COPY ["BankingMigration.Api/BankingMigration.Api.csproj", "BankingMigration.Api/"]
 RUN dotnet restore "./BankingMigration.Api/BankingMigration.Api.csproj"
 COPY . .
-WORKDIR "/src/BankingMigration.Api"
+WORKDIR "/BankingMigration.Api"
 RUN dotnet build "./BankingMigration.Api.csproj" -c $BUILD_CONFIGURATION -o /app/build
 
 # This stage is used to publish the service project to be copied to the final stage
