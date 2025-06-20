@@ -1,0 +1,25 @@
+name: Vehicle Pricer Images CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build_and_push_banking_migrations_api:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v4
+
+      - name: Build Banking Migration Api Docker image
+        working-directory: .
+        run: docker build -t rolandomesagdp/banking-migration-api:latest -f BankingMigration.Api/Dockerfile .
+
+      - name: Login to Docker Hub
+        run: docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Pushing Banking Migration Api image to Docker Hub
+        run: docker push rolandomesagdp/banking-migration-api:latest
