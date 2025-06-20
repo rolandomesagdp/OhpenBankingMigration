@@ -27,5 +27,6 @@ The images are distributed via Docker Hub container registry.
 The images repositories are:  
 1- https://hub.docker.com/repository/docker/rolandomesagdp/banking-migration-api/general  
 2- https://hub.docker.com/repository/docker/rolandomesagdp/banking-migration-az-func/general  
+This is only a delivery example. They don't actually work because both containers depend on an SQL Server Container (wich can be solved with the one provided in the compose.yml) and, more important, the AZ function requires authentication in combination with an Azure Service Bus, which we don't have. The api can be tested as container. But the AZ Function app cannot: will return a 401 error.
 ## CI/CD Workflow trigger
 The Github workflow is triggered on every push or pull request to the main branch.
