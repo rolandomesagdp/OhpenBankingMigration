@@ -1,4 +1,4 @@
-name: Banking Migration Images CI
+name: Banking Migration Images To Docker Hub
 
 on:
   push:
