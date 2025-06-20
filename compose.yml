@@ -27,4 +27,4 @@
         depends_on: 
             - banking_migration_sql
         ports:
-            - "5140:8080"
+            - "5212:8080"
