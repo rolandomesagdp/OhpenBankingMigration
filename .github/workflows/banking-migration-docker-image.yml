@@ -1,4 +1,4 @@
-name: Vehicle Pricer Images CI
+name: Banking Migration Images CI
 
 on:
   push:
