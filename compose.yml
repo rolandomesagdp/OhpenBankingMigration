@@ -18,13 +18,13 @@
             - banking_migration_sql
         ports:
             - "5140:8080"
-    baking_migration_az_function:
-        build:
-          context: .
-          dockerfile: ./BankingMigration.Func/Dockerfile
-        environment:
-            - "ConnectionStrings:MigrationJobsDb=Server=banking_migration_sql,1433;Database=MigrationJobsDb;User Id=sa;Password=AVeryComplex123Password!;Encrypt=false;TrustServerCertificate=true;MultipleActiveResultSets=true"
-        depends_on: 
-            - banking_migration_sql
-        ports:
-            - "5212:8080"
+    # baking_migration_az_function:
+    #     build:
+    #       context: .
+    #       dockerfile: ./BankingMigration.Func/Dockerfile
+    #     environment:
+    #         - "ConnectionStrings:MigrationJobsDb=Server=banking_migration_sql,1433;Database=MigrationJobsDb;User Id=sa;Password=AVeryComplex123Password!;Encrypt=false;TrustServerCertificate=true;MultipleActiveResultSets=true"
+    #     depends_on: 
+    #         - banking_migration_sql
+    #     ports:
+    #         - "5212:8080"
