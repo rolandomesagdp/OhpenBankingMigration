@@ -9,9 +9,8 @@
           - MSSQL_SA_PASSWORD=AVeryComplex123Password!
           - MSSQL_PID=Express
     baking_migration_api:
-        build:
-          context: .
-          dockerfile: ./BankingMigration.Api/Dockerfile
+        image: rolandomesagdp/banking-migration-api
+        pull_policy: always
         container_name: baking_migration_api_container
         environment:
             - "ConnectionStrings:MigrationJobsDb=Server=banking_migration_sql,1433;Database=MigrationJobsDb;User Id=sa;Password=AVeryComplex123Password!;Encrypt=false;TrustServerCertificate=true;MultipleActiveResultSets=true"
@@ -19,12 +18,13 @@
             - banking_migration_sql
         ports:
             - "5140:8080"
-
-  # services:
-  #   baking_migration_api:
-  #     build:
-  #       context: .
-  #       dockerfile: ./BankingMigration.Api/Dockerfile
-  #     image: banking-migration-api:latest
-  #     ports:
-  #     - 32771:8080
+    baking_migration_az_function:
+        build:
+          context: .
+          dockerfile: ./BankingMigration.Func/Dockerfile
+        environment:
+            - "ConnectionStrings:MigrationJobsDb=Server=banking_migration_sql,1433;Database=MigrationJobsDb;User Id=sa;Password=AVeryComplex123Password!;Encrypt=false;TrustServerCertificate=true;MultipleActiveResultSets=true"
+        depends_on: 
+            - banking_migration_sql
+        ports:
+            - "5140:8080"
