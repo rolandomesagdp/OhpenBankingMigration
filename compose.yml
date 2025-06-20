@@ -1,29 +1,30 @@
-  # services:
-  #   banking_migration_sql:
-  #       image: mcr.microsoft.com/mssql/server:2022-latest
-  #       container_name: banking_migration_sql_container
-  #       ports:
-  #           - "1431:1433" 
-  #       environment:
-  #         - ACCEPT_EULA=y
-  #         - MSSQL_SA_PASSWORD=AVeryComplex123Password!
-  #         - MSSQL_PID=Express
-  #   baking_migration_api:
-  #       image: rolandomesagdp/baking_migration_api
-  #       pull_policy: always
-  #       container_name: baking_migration_api_container
-  #       environment:
-  #           - "ConnectionStrings:MigrationJobsDb=Server=banking_migration_sql,1433;Database=MigrationJobsDb;User Id=sa;Password=AVeryComplex123Password!;Encrypt=false;TrustServerCertificate=true;MultipleActiveResultSets=true"
-  #       depends_on: 
-  #           - banking_migration_sql
-  #       ports:
-  #           - "5140:8080"
-
   services:
+    banking_migration_sql:
+        image: mcr.microsoft.com/mssql/server:2022-latest
+        container_name: banking_migration_sql_container
+        ports:
+            - "1431:1433" 
+        environment:
+          - ACCEPT_EULA=y
+          - MSSQL_SA_PASSWORD=AVeryComplex123Password!
+          - MSSQL_PID=Express
     baking_migration_api:
-      build:
-        context: .
-        dockerfile: ./BankingMigration.Api/Dockerfile
-      image: banking-migration-api:latest
-      ports:
-      - 32771:8080
+        build:
+          context: .
+          dockerfile: ./BankingMigration.Api/Dockerfile
+        container_name: baking_migration_api_container
+        environment:
+            - "ConnectionStrings:MigrationJobsDb=Server=banking_migration_sql,1433;Database=MigrationJobsDb;User Id=sa;Password=AVeryComplex123Password!;Encrypt=false;TrustServerCertificate=true;MultipleActiveResultSets=true"
+        depends_on: 
+            - banking_migration_sql
+        ports:
+            - "5140:8080"
+
+  # services:
+  #   baking_migration_api:
+  #     build:
+  #       context: .
+  #       dockerfile: ./BankingMigration.Api/Dockerfile
+  #     image: banking-migration-api:latest
+  #     ports:
+  #     - 32771:8080
